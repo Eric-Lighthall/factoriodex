@@ -23,9 +23,19 @@ MongoClient.connect(dbConnectionString, {useUnifiedTopology: true})
 
 // Endpoint to get all enemies
 app.get('/api/enemies', async (req, res) => {
+
+    const query = {};
+    if (req.query.type) {
+        query['type'] = req.query.type;
+    }
+    if (req.query.name) {
+        // Use a regular expression for case-insensitive partial matching
+        query['name'] = new RegExp(req.query.name, 'i');
+    }
+
     try {
         const enemiesCollection = db.collection('enemies');
-        const enemies = await enemiesCollection.find().toArray();
+        const enemies = await enemiesCollection.find(query).toArray();
         res.status(200).json(enemies);
     } catch (error) {
         res.status(500).json({ error: 'An error occurred while fetching enemies' });
