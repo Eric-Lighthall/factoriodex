@@ -1,0 +1,19 @@
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+header {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+header h1 {
+    text-align: center;
+}
+.api-endpoint {
+    background: #f4f4f4;
+    padding: 15px;
+    margin-bottom: 5px;
+}

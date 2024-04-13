@@ -8,6 +8,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'))
 
 
 // Connect to MongoDB
@@ -35,8 +36,31 @@ app.get('/api/enemies', async (req, res) => {
 
     try {
         const enemiesCollection = db.collection('enemies');
-        const enemies = await enemiesCollection.find(query).toArray();
+        const projection = { _id: 0 };
+        const enemies = await enemiesCollection.find(query, {projection}).toArray();
         res.status(200).json(enemies);
+    } catch (error) {
+        res.status(500).json({ error: 'An error occurred while fetching enemies' });
+    }
+});
+
+// Endpoint to get all research
+app.get('/api/research', async (req, res) => {
+
+    const query = {};
+    const limit = parseInt(req.query.limit, 10) || 10; // Default limit
+    const page = parseInt(req.query.page, 10) || 1;
+    const skip = (page - 1) * limit;
+
+    if (req.query.name) {
+        query['name'] = { $regex: new RegExp(req.query.name, 'i') };
+    }
+
+    try {
+        const researchCollection = db.collection('research');
+        const projection = { _id: 0 };
+        const research = await researchCollection.find(query, {projection}).skip(skip).limit(limit).toArray();
+        res.status(200).json(research);
     } catch (error) {
         res.status(500).json({ error: 'An error occurred while fetching enemies' });
     }

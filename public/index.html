@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factoriodex</title>
+    <link rel="stylesheet" href="public/reset.css">
+    <link rel="stylesheet" href="public/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Factorio API Documentation</h1>
+    </header>
+    <div class="container">
+        <section class="api-endpoint">
+            <h2>/api/enemies</h2>
+            <p>Returns a list of all enemies.</p>
+            <h3>Query Parameters:</h3>
+            <ul>
+                <li><strong>type</strong> - Filters enemies by type (e.g., biter, spitter, worm, nest).</li>
+                <li><strong>name</strong> - Filters enemies that contain the specified name.</li>
+            </ul>
+            <h3>Example:</h3>
+            <p><code>GET /api/enemies?type=biter&name=big</code></p>
+        </section>
+</body>
+</html>
