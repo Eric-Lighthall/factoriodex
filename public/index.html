@@ -1,105 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Factoriodex</title>
-        <link rel="stylesheet" href="reset.css" />
-        <link rel="stylesheet" href="styles.css" />
-    </head>
-    <body>
-        <header>
-            <div class="logo">
-                <img src="/images/factoriodex.webp" alt="Factorio Logo"/>
-            </div>
-            <nav>
-                <a
-                    href="https://www.postman.com/"
-                    target="_blank"
-                    class="button"
-                    >Run in Postman</a
-                >
-            </nav>
-        </header>
-        <div class="container">
-            <aside class="sidebar">
-                <h2>Factoriodex API</h2>
-                <ul>
-                    <li>
-                        <a href="#">Introduction</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#">Items</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Link 1</a></li>
-                            <li><a href="#">Link 2</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#">Research</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Link 1</a></li>
-                            <li><a href="#">Link 2</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#">Enemies</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Link 1</a></li>
-                            <li><a href="#">Link 2</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </aside>
 
-            <main>
-                <div class="content">
-                    <h1>Factoriodex API</h1>
-                    <p>
-                        Factoriodex is an API that provides data and information about the game Factorio, by 
-                        Wube Software LTD. It offers access to data about items, research, enemies and enemies.
-                    </p>
-                    <p>
-                        Factoriodex offers a fully documented public API for developers to use in their own apps or websites.
-                    </p>
-    
-                    <h2>Important Usage Notes</h2>
-                    <p>
-                        The API is completely free and while not required, it is always appreciated if you mention somewhere that your app or site is making use of the Factoriodex API.
-                    </p>
-    
-                    <h2>Authorization & Rate Limiting</h2>
-                    <p>
-                        One of the most frequent inquiries concerns the need for API Keys. The API is completely public and does not require any authorization or API Key. You can start using it immediately!
-                    </p>
-                    <p>
-                        To maintain server performance, Factoriodex enforces rate limits on API calls. 
-                        Exceeding these limits results in a temporary block with a 429 HTTP status code, automatically lifted after a set period. 
-                        All users face the same limits. Consider using a Mock API, like Postman's, during development to avoid rate limits.
-                    </p>
-                    <p>
-                        The API fully supports CORS, allowing requests directly from users' browsers or apps. This approach minimizes the likelihood of encountering rate limiting problems.
-                    </p>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Factoriodex</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
 
-                    <h2>Help & Support</h2>
-                    <p>
-                        If you encounter any issues, need assistance with your implementation, or simply want to share how you're using the API, don't hesitate to reach out.
-                    </p>
-                    <p>
-                        You can contact me, Eric, through the contact channels at <a href="https://ericlighthall.com" target="_blank">ericlighthall.com</a>. I'm always eager to help!
-                    </p>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/images/factoriodex.webp" alt="Factorio Logo" />
+        </div>
+        <nav>
+            <a href="https://www.postman.com/" target="_blank" class="button">Run in Postman</a>
+        </nav>
+    </header>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Factoriodex API</h2>
+            <ul>
+                <li>
+                    <a href="#">Introduction</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Items</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Research</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Enemies</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
 
-                    <h2>Updates</h2>
-                    <p>
-                        The API may receive updates in the future; however, these are not guaranteed. 
-                        Keep an eye on the website for any changes that might enhance functionality or extend the range of features.
-                    </p>
+        <main>
+            <div class="content">
+                <div class="intro">
+                    <div class="example-info">
+                        <h1>Factoriodex API</h1>
+                        <p>
+                            Factoriodex is an API that provides data and information about the game Factorio, by
+                            Wube Software LTD. It offers access to data about items, research, enemies and enemies.
+                        </p>
+                        <p>
+                            Factoriodex offers a fully documented public API for developers to use in their own apps or
+                            websites.
+                        </p>
 
-                    <hr>
+                        <h2>Important Usage Notes</h2>
+                        <p>
+                            The API is completely free and while not required, it is always appreciated if you mention
+                            somewhere that your app or site is making use of the Factoriodex API.
+                        </p>
 
-                    <div class="request-example">
+                        <h2>Authorization & Rate Limiting</h2>
+                        <p>
+                            One of the most frequent inquiries concerns the need for API Keys. The API is completely
+                            public and does not require any authorization or API Key. You can start using it
+                            immediately!
+                        </p>
+                        <p>
+                            To maintain server performance, Factoriodex enforces rate limits on API calls.
+                            Exceeding these limits results in a temporary block with a 429 HTTP status code,
+                            automatically lifted after a set period.
+                            All users face the same limits.
+                        </p>
+                        <p>
+                            The API fully supports CORS, allowing requests directly from users' browsers or apps. This
+                            approach minimizes the likelihood of encountering rate limiting problems.
+                        </p>
+
+                        <h2>Help & Support</h2>
+                        <p>
+                            If you encounter any issues, need assistance with your implementation, or simply want to
+                            share how you're using the API, don't hesitate to reach out.
+                        </p>
+                        <p>
+                            You can contact me, Eric, through the contact channels at <a
+                                href="https://ericlighthall.com" target="_blank">ericlighthall.com</a>. I'm always eager
+                            to help!
+                        </p>
+
+                        <h2>Updates</h2>
+                        <p>
+                            The API may receive updates in the future; however, these are not guaranteed.
+                            Keep an eye on the website for any changes that might enhance functionality or extend the
+                            range of features.
+                        </p>
+                        <hr>
+                    </div>
+                    <div class="example-code">
+
+                    </div>
+                </div>
+
+                <div class="request-example">
+                    <div class="example-info">
                         <h3>Enemies</h3>
                         <pre><code>GET /api/enemies?type=biter&name=small&page=1</code></pre>
+                        <p>Get a paged list of all enemies matching any number of criteria, all of the following
+                            filtering parameters are optional</p>
                         <table>
                             <thead>
                                 <tr>
@@ -110,27 +126,105 @@
                             <tbody>
                                 <tr>
                                     <td>type</td>
-                                    <td>The type of enemy to filter by.</td>
+                                    <td>(optional, string)<br>Only returns enemeies of the specified type.</td>
                                 </tr>
                                 <tr>
                                     <td>name</td>
-                                    <td>The name of the enemy to search for.</td>
+                                    <td>(optional, string)<br>Returns enemies containing 'name'.</td>
                                 </tr>
                                 <tr>
                                     <td>page</td>
-                                    <td>The page number of results to return.</td>
+                                    <td>(optional, integer)<br>The page number of results to return.</td>
                                 </tr>
                             </tbody>
                         </table>
+                        <hr>
+                    </div>
+                    <div class="example-code">
+                        <pre><code>// Javascript
+fetch('/api/enemies?type=biter&name=small&page=1')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));</code></pre>
                     </div>
                 </div>
+                <div class="request-example">
+                    <div class="example-info">
+                        <h3>Items</h3>
+                        <pre><code>GET /api/items?name=iron-plate&category=intermediate&dimensions=1x1&craftingTime=3.2</code></pre>
+                        <p>Returns a list of game items with the specified parameters.</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>name</td>
+                                    <td>(optional, string)<br>The name of the item to search for.</td>
+                                </tr>
+                                <tr>
+                                    <td>category</td>
+                                    <td>(optional, string)<br>The category of the item to filter by.</td>
+                                </tr>
+                                <tr>
+                                    <td>dimensions</td>
+                                    <td>(optional, string)<br>The dimensions of the item (e.g., 1x1, 2x2).</td>
+                                </tr>
+                                <tr>
+                                    <td>maxCraftingTime</td>
+                                    <td>(optional, number)<br>Only returns items with a crafting time <em>less</em> than
+                                        this value</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr>
+                    </div>
+                    <div class="example-code">
+                        <pre><code>// Javascript
+fetch('/api/items?name=iron-plate&category=intermediate&dimensions=1x1&craftingTime=3.2')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));</code></pre>
+                    </div>
+                </div>
+                <div class="request-example">
+                    <div class="example-info">
+                        <h3>Research</h3>
+                        <pre><code>GET /api/research?name=automation&sciencePacks=automation-science-pack,logistic-science-pack</code></pre>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>name</td>
+                                    <td>(optional, string)<br>The name of the research item to search for.</td>
+                                </tr>
+                                <tr>
+                                    <td>sciencePacks</td>
+                                    <td>(optional, string)<br>The science pack types required for the research,
+                                        separated by commas.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr>
+                    </div>
+                    <div class="example-code">
+                        <pre><code>// Javascript
+fetch('/api/research?name=automation&sciencePacks=automation-science-pack,logistic-science-pack')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));</code></pre>
+                    </div>
+                </div>
+        </main>
+    </div>
+</body>
 
-            </main>
-    
-            <div class="request-examples">
-                <h2>Request Examples</h2>
-                <!-- Add request examples here -->
-            </div>
-        </div>
-    </body>
 </html>

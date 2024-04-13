@@ -8,7 +8,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #24292e;
+    background-color: #1c2938;
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -162,4 +162,45 @@ main {
 
 .request-example code {
     font-family: monospace;
+}
+
+.request-examples {
+    width: 50%;
+    padding: 20px;
+}
+
+.request-example {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.example-info {
+    flex: 4;
+    padding-right: 20px;
+}
+
+.example-info hr {
+    margin-top: 50px;
+}
+
+.example-code {
+    flex: 3;
+    background-color: #1c2938;
+    padding: 20px;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+.example-code pre {
+    margin: 0;
+    background-color: #0f1215;
+    min-height: 300px;
+}
+
+.example-code code {
+    color: #ffffff;
+}
+
+.intro {
+    display: flex;
 }
