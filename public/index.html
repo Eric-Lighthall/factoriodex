@@ -1,27 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Factoriodex</title>
-    <link rel="stylesheet" href="public/reset.css">
-    <link rel="stylesheet" href="public/styles.css">
-</head>
-<body>
-    <header>
-        <h1>Factorio API Documentation</h1>
-    </header>
-    <div class="container">
-        <section class="api-endpoint">
-            <h2>/api/enemies</h2>
-            <p>Returns a list of all enemies.</p>
-            <h3>Query Parameters:</h3>
-            <ul>
-                <li><strong>type</strong> - Filters enemies by type (e.g., biter, spitter, worm, nest).</li>
-                <li><strong>name</strong> - Filters enemies that contain the specified name.</li>
-            </ul>
-            <h3>Example:</h3>
-            <p><code>GET /api/enemies?type=biter&name=big</code></p>
-        </section>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Factoriodex</title>
+        <link rel="stylesheet" href="reset.css" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="/images/factoriodex.webp" alt="Factorio Logo"/>
+            </div>
+            <nav>
+                <a
+                    href="https://www.postman.com/"
+                    target="_blank"
+                    class="button"
+                    >Run in Postman</a
+                >
+            </nav>
+        </header>
+        <div class="container">
+            <aside class="sidebar">
+                <h2>Factoriodex API</h2>
+                <ul>
+                    <li>
+                        <a href="#">Introduction</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Items</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Link 1</a></li>
+                            <li><a href="#">Link 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Research</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Link 1</a></li>
+                            <li><a href="#">Link 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Enemies</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Link 1</a></li>
+                            <li><a href="#">Link 2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>
+
+            <main>
+                <div class="content">
+                    <h1>Factoriodex API</h1>
+                    <p>
+                        Factoriodex is an API that provides data and information about the game Factorio, by 
+                        Wube Software LTD. It offers access to data about items, research, enemies and enemies.
+                    </p>
+                    <p>
+                        Factoriodex offers a fully documented public API for developers to use in their own apps or websites.
+                    </p>
+    
+                    <h2>Important Usage Notes</h2>
+                    <p>
+                        The API is completely free and while not required, it is always appreciated if you mention somewhere that your app or site is making use of the Factoriodex API.
+                    </p>
+    
+                    <h2>Authorization & Rate Limiting</h2>
+                    <p>
+                        One of the most frequent inquiries concerns the need for API Keys. The API is completely public and does not require any authorization or API Key. You can start using it immediately!
+                    </p>
+                    <p>
+                        To maintain server performance, Factoriodex enforces rate limits on API calls. 
+                        Exceeding these limits results in a temporary block with a 429 HTTP status code, automatically lifted after a set period. 
+                        All users face the same limits. Consider using a Mock API, like Postman's, during development to avoid rate limits.
+                    </p>
+                    <p>
+                        The API fully supports CORS, allowing requests directly from users' browsers or apps. This approach minimizes the likelihood of encountering rate limiting problems.
+                    </p>
+
+                    <h2>Help & Support</h2>
+                    <p>
+                        If you encounter any issues, need assistance with your implementation, or simply want to share how you're using the API, don't hesitate to reach out.
+                    </p>
+                    <p>
+                        You can contact me, Eric, through the contact channels at <a href="https://ericlighthall.com" target="_blank">ericlighthall.com</a>. I'm always eager to help!
+                    </p>
+
+                    <h2>Updates</h2>
+                    <p>
+                        The API may receive updates in the future; however, these are not guaranteed. 
+                        Keep an eye on the website for any changes that might enhance functionality or extend the range of features.
+                    </p>
+
+                    <hr>
+
+                    <div class="request-example">
+                        <h3>Enemies</h3>
+                        <pre><code>GET /api/enemies?type=biter&name=small&page=1</code></pre>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>type</td>
+                                    <td>The type of enemy to filter by.</td>
+                                </tr>
+                                <tr>
+                                    <td>name</td>
+                                    <td>The name of the enemy to search for.</td>
+                                </tr>
+                                <tr>
+                                    <td>page</td>
+                                    <td>The page number of results to return.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </main>
+    
+            <div class="request-examples">
+                <h2>Request Examples</h2>
+                <!-- Add request examples here -->
+            </div>
+        </div>
+    </body>
 </html>
