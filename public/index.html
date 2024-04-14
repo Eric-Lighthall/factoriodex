@@ -20,27 +20,29 @@
     </header>
     <div class="container">
         <aside class="sidebar">
-            <h2>Factoriodex API</h2>
+            <div class="sidebar-header">
+                <h2>Factoriodex API</h2>
+            </div>
             <ul>
                 <li>
-                    <a href="#">Introduction</a>
+                    <a href="#intro">Introduction</a>
                 </li>
                 <li class="dropdown">
-                    <a href="#">Items</a>
+                    <a href="#items" class="dropdown-toggle">Items</a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Link 1</a></li>
                         <li><a href="#">Link 2</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#">Research</a>
+                    <a href="#enemies" class="dropdown-toggle">Enemies</a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Link 1</a></li>
                         <li><a href="#">Link 2</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#">Enemies</a>
+                    <a href="#research" class="dropdown-toggle">Research</a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Link 1</a></li>
                         <li><a href="#">Link 2</a></li>
@@ -51,25 +53,25 @@
 
         <main>
             <div class="content">
-                <div class="intro">
+                <div id="intro">
                     <div class="example-info">
                         <h1>Factoriodex API</h1>
                         <p>
                             Factoriodex is an API that provides data and information about the game Factorio, by
-                            Wube Software LTD. It offers access to data about items, research, enemies and enemies.
+                            Wube Software LTD. It offers access to data about items, research, and enemies.
                         </p>
                         <p>
                             Factoriodex offers a fully documented public API for developers to use in their own apps or
                             websites.
                         </p>
 
-                        <h2>Important Usage Notes</h2>
+                        <h2>📌Important Usage Notes</h2>
                         <p>
                             The API is completely free and while not required, it is always appreciated if you mention
                             somewhere that your app or site is making use of the Factoriodex API.
                         </p>
 
-                        <h2>Authorization & Rate Limiting</h2>
+                        <h2>🔑Authorization & Rate Limiting</h2>
                         <p>
                             One of the most frequent inquiries concerns the need for API Keys. The API is completely
                             public and does not require any authorization or API Key. You can start using it
@@ -86,7 +88,7 @@
                             approach minimizes the likelihood of encountering rate limiting problems.
                         </p>
 
-                        <h2>Help & Support</h2>
+                        <h2>🙋‍♂️Help & Support</h2>
                         <p>
                             If you encounter any issues, need assistance with your implementation, or simply want to
                             share how you're using the API, don't hesitate to reach out.
@@ -97,7 +99,7 @@
                             to help!
                         </p>
 
-                        <h2>Updates</h2>
+                        <h2>📢Updates</h2>
                         <p>
                             The API may receive updates in the future; however, these are not guaranteed.
                             Keep an eye on the website for any changes that might enhance functionality or extend the
@@ -110,10 +112,10 @@
                     </div>
                 </div>
 
-                <div class="request-example">
+                <div class="request-example" id="enemies">
                     <div class="example-info">
                         <h3>Enemies</h3>
-                        <pre><code>GET /api/enemies?type=biter&name=small&page=1</code></pre>
+                        <pre><code>GET /api/enemies?type=biter&name=small</code></pre>
                         <p>Get a paged list of all enemies matching any number of criteria, all of the following
                             filtering parameters are optional</p>
                         <table>
@@ -133,22 +135,72 @@
                                     <td>(optional, string)<br>Returns enemies containing 'name'.</td>
                                 </tr>
                                 <tr>
-                                    <td>page</td>
-                                    <td>(optional, integer)<br>The page number of results to return.</td>
+                                    <td>minDamage</td>
+                                    <td>(optional, number)<br>Returns enemies with a damage value <em>greater</em> than this amount.</td>
+                                </tr>
+                                <tr>
+                                    <td>maxDamage</td>
+                                    <td>(optional, number)<br>Returns enemies with a damage value <em>less</em> than this amount.</td>
+                                </tr>
+                                <tr>
+                                    <td>minSpeed</td>
+                                    <td>(optional, number)<br>Returns enemies with a speed value <em>greater</em> than this amount.</td>
+                                </tr>
+                                <tr>
+                                    <td>maxSpeed</td>
+                                    <td>(optional, number)<br>Returns enemies with a speed value <em>less</em> than this amount.</td>
+                                </tr>
+                                <tr>
+                                    <td>minRange</td>
+                                    <td>(optional, number)<br>Returns enemies with an attack range value <em>greater</em> than this amount.</td>
+                                </tr>
+                                <tr>
+                                    <td>maxRange</td>
+                                    <td>(optional, number)<br>Returns enemies with an attack range value <em>less</em> than this amount.</td>
                                 </tr>
                             </tbody>
                         </table>
                         <hr>
                     </div>
                     <div class="example-code">
+                        <h4>Example Request</h4>
                         <pre><code>// Javascript
-fetch('/api/enemies?type=biter&name=small&page=1')
+fetch('/api/enemies?type=biter&name=big')
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error(error));</code></pre>
+    <h4>Sample Response</h4>
+                    <pre><code>[
+    {
+        "name": "Big Biter",
+        "description": "Dangerous, resistant to small arms. Can attack through walls, hitting objects directly behind them.",
+        "attributes": {
+        "health": 375,
+        "damage": {
+            "type": "Physical",
+            "amount": 30
+        },
+        "attack_speed": 1.71,
+        "speed": "49.7 km/h",
+        "range": 2,
+        "pollution_to_join_attack": 80
+        },
+        "resistances": {
+        "explosion": {
+            "damage_reduction": 0,
+            "resistance_percentage": 10
+        },
+        "physical": {
+            "damage_reduction": 8,
+            "resistance_percentage": 10
+        }
+        },
+        "type": "biter"
+    }
+]</code></pre>
                     </div>
                 </div>
-                <div class="request-example">
+                <div class="request-example" id="items">
                     <div class="example-info">
                         <h3>Items</h3>
                         <pre><code>GET /api/items?name=iron-plate&category=intermediate&dimensions=1x1&craftingTime=3.2</code></pre>
@@ -183,14 +235,26 @@ fetch('/api/enemies?type=biter&name=small&page=1')
                         <hr>
                     </div>
                     <div class="example-code">
+                        <h4>Example Request</h4>
                         <pre><code>// Javascript
 fetch('/api/items?name=iron-plate&category=intermediate&dimensions=1x1&craftingTime=3.2')
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error(error));</code></pre>
+    <h4>Sample Response</h4>
+                    <pre><code>{
+  "items": [
+    {
+      "name": "Iron Plate",
+      "category": "intermediate",
+      "dimensions": "1x1",
+      "craftingTime": 3.2
+    }
+  ]
+}</code></pre>
                     </div>
                 </div>
-                <div class="request-example">
+                <div class="request-example" id="research">
                     <div class="example-info">
                         <h3>Research</h3>
                         <pre><code>GET /api/research?name=automation&sciencePacks=automation-science-pack,logistic-science-pack</code></pre>
@@ -216,15 +280,29 @@ fetch('/api/items?name=iron-plate&category=intermediate&dimensions=1x1&craftingT
                         <hr>
                     </div>
                     <div class="example-code">
+                        <h4>Example Request</h4>
                         <pre><code>// Javascript
 fetch('/api/research?name=automation&sciencePacks=automation-science-pack,logistic-science-pack')
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error(error));</code></pre>
+    <h4>Sample Response</h4>
+                    <pre><code>{
+  "research": [
+    {
+      "name": "Automation",
+      "sciencePacks": [
+        "automation-science-pack",
+        "logistic-science-pack"
+      ]
+    }
+  ]
+}</code></pre>
                     </div>
                 </div>
         </main>
     </div>
+    <!-- <script src="ui.js"></script> -->
 </body>
 
 </html>

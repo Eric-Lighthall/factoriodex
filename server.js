@@ -22,21 +22,17 @@ MongoClient.connect(dbConnectionString, {useUnifiedTopology: true})
     db = client.db(dbName);
 });
 
-async function getPaginatedData(collectionName, query, req) {
+async function getPaginatedData(collectionName, query) {
     const projection = { _id: 0 };
-    const page = parseInt(req.query.page, 10) || 1;
-    const limit = parseInt(req.query.limit, 10) || 10;
-    const skip = (page - 1) * limit;
-
     const collection = db.collection(collectionName);
-    return collection.find(query, { projection }).skip(skip).limit(limit).toArray();
+    return collection.find(query, { projection }).toArray();
 }
 
 // Endpoint to get all enemies
 app.get('/api/enemies', async (req, res) => {
     const query = buildQuery(req, ['type', 'name']);
     try {
-        const enemies = await getPaginatedData('enemies', query, req);
+        const enemies = await getPaginatedData('enemies', query);
         res.status(200).json(enemies);
     } catch (error) {
         res.status(500).json({ error: 'An error occurred while fetching enemies' });
@@ -47,10 +43,20 @@ app.get('/api/enemies', async (req, res) => {
 app.get('/api/research', async (req, res) => {
     const query = buildQuery(req, ['name']);
     try {
-        const research = await getPaginatedData('research', query, req);
+        const research = await getPaginatedData('research', query);
         res.status(200).json(research);
     } catch (error) {
         res.status(500).json({ error: 'An error occurred while fetching research' });
+    }
+});
+
+app.get('/api/items', async (req, res) => {
+    const query = buildQuery(req, ['name', 'category', 'dimensions', 'maxCraftingTime']);
+    try {
+        const items = await getPaginatedData('items', query);
+        res.status(200).json(items);
+    } catch (error) {
+        res.status(500).json({ error: 'An error occurred while fetching items' });
     }
 });
 
@@ -63,12 +69,28 @@ app.listen(PORT, () => {
 })
 
 function buildQuery(req, fields) {
-    return fields.reduce((query, field) => {
+    const query = fields.reduce((query, field) => {
         if (req.query[field]) {
-            query[field] = field === 'name'
-                ? new RegExp(req.query[field], 'i')
-                : req.query[field];
+            if (field === 'name') {
+                // Regular expression for name search
+                query[field] = new RegExp(req.query[field], 'i');
+            } else if (field === 'type') {
+                // Regular expression for type within a nested object
+                query['attributes.damage.type'] = new RegExp(req.query[field], 'i');
+            } else if (field === 'minDamage' || field === 'maxDamage') {
+                // Numeric range query for damage.amount
+                const path = 'attributes.damage.amount';
+                if (!query[path]) {
+                    query[path] = {};
+                }
+                if (field === 'minDamage') {
+                    query[path]['$gte'] = parseInt(req.query[field]);
+                } else {
+                    query[path]['$lte'] = parseInt(req.query[field]);
+                }
+            }
         }
         return query;
     }, {});
+    return query;
 }

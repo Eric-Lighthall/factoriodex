@@ -33,19 +33,31 @@ header {
 
 .container {
     display: flex;
-    min-height: calc(100vh - 60px); /* Adjust the value based on header height */
 }
 
 .sidebar {
-    width: 250px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    left: 0;
+    flex: 0 0 250px;
+    height: 100vh;
     background-color: #24292e;
     padding: 20px;
     color: #ffffff;
+    overflow-y: auto;
+    z-index: 999;
+}
+
+.sidebar-header {
+    background-color: #1c2938;
+    padding: 10px;
+    margin-bottom: 20px;
 }
 
 .sidebar h2 {
     font-size: 24px;
-    margin-bottom: 20px;
+    margin: 0;
 }
 
 .sidebar ul {
@@ -67,28 +79,32 @@ header {
     color: #3498db;
 }
 
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    left: 100%;
-    top: 0;
-    background-color: #24292e;
-    padding: 10px;
-    min-width: 150px;
+.dropdown-toggle::after {
+    /* content: '\25BE'; */
+    margin-left: 5px;
 }
 
-.dropdown:hover .dropdown-menu {
+.dropdown-menu {
+    display: none;
+    position: static;
+    background-color: #24292e;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.dropdown.active .dropdown-menu {
     display: block;
 }
 
 main {
-    flex: 1;
+    flex-grow: 1;
+    overflow-x: hidden;
     padding: 20px;
 }
 
 .content {
-    flex: 1;
-    padding-right: 20px;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .content h1 {
@@ -107,7 +123,6 @@ main {
 }
 
 .request-examples {
-    width: 40%;
     background-color: #24292e;
     color: #ffffff;
 }
@@ -165,7 +180,6 @@ main {
 }
 
 .request-examples {
-    width: 50%;
     padding: 20px;
 }
 
@@ -175,7 +189,7 @@ main {
 }
 
 .example-info {
-    flex: 4;
+    flex: 0.60;
     padding-right: 20px;
 }
 
@@ -183,24 +197,49 @@ main {
     margin-top: 50px;
 }
 
+.example-info h1 {
+    margin-bottom: 40px;
+}
+
 .example-code {
-    flex: 3;
+    flex: 0.40;
     background-color: #1c2938;
     padding: 20px;
     border-radius: 4px;
     overflow-x: auto;
 }
 
+.example-code h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
 .example-code pre {
     margin: 0;
+    margin-bottom: 40px;
     background-color: #0f1215;
     min-height: 300px;
+}
+
+.example-code pre:last-child {
+    margin-bottom: 0;
 }
 
 .example-code code {
     color: #ffffff;
 }
 
-.intro {
+#intro {
     display: flex;
+}
+
+@media screen and (max-width: 1600px) {
+    #intro .example-code{
+        display: none;
+    }
+
+    .content .request-example {
+        flex-direction: column;
+    }
 }
