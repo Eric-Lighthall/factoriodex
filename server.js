@@ -3,7 +3,7 @@ const cors = require('cors');
 const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const app = express();
 
 app.use(cors());
@@ -60,15 +60,6 @@ app.get('/api/items', async (req, res) => {
     }
 });
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
-
-app.listen(PORT, () => {
-    console.log(`The server is running on port ${PORT}`);
-});
-
-
 function buildEnemyQuery(req) {
     const fields = ['type', 'name', 'minDamage', 'maxDamage', 'minRange', 'maxRange', 'minSpeed', 'maxSpeed'];
     return fields.reduce((query, field) => {
@@ -122,47 +113,10 @@ function handleEnemyQueryField(query, field, value) {
     }
 }
 
-// function buildQuery(req, fields) {
-//     return fields.reduce((query, field) => {
-//         if (req.query[field]) {
-//             if (field === 'name') {
-//                 // Regular expression for name search
-//                 query[field] = new RegExp(req.query[field], 'i');
-//             } 
-//             else if (field === 'type') {
-//                 // Regular expression for type within a nested object
-//                 query['attributes.damage.type'] = new RegExp(req.query[field], 'i');
-//             } 
-//             else if (field === 'minDamage' || field === 'maxDamage') {
-//                 // Numeric range query for damage.amount
-//                 const path = 'attributes.damage.amount';
-//                 if (!query[path]) {
-//                     query[path] = {};
-//                 }
-//                 if (field === 'minDamage') {
-//                     query[path]['$gte'] = parseInt(req.query[field]);
-//                 } else {
-//                     query[path]['$lte'] = parseInt(req.query[field]);
-//                 }
-//             }
-//             else if (field === 'minRange' || field === 'maxRange') {
-//                 // Numeric range query for range
-//                 const rangePath = 'attributes.range';
-//                 if (!query[rangePath]) {
-//                     query[rangePath] = {};
-//                 }
-//                 query[rangePath][field === 'minRange' ? '$gte' : '$lte'] = parseInt(req.query[field]);
-//             }
-//             else if (field === 'minSpeed' || field === 'maxSpeed') {
-//                 // Numeric range query for speed, after removing non-numeric characters
-//                 const speedPath = 'attributes.speed';
-//                 if (!query[speedPath]) {
-//                     query[speedPath] = {};
-//                 }
-//                 const speedValue = parseFloat(req.query[field].replace(/[^0-9\.]/g, ''));
-//                 query[speedPath][field === 'minSpeed' ? '$gte' : '$lte'] = speedValue;
-//             }
-//         }
-//         return query;
-//     }, {});
-// }
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
+app.listen(PORT, () => {
+    console.log(`The server is running on port ${PORT}`);
+});
