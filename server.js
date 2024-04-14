@@ -10,7 +10,6 @@ app.use(cors({
     origin: 'https://factoriodex.cyclic.app'
 }));
 app.use(express.json());
-app.use(express.static('public'))
 
 
 // Connect to MongoDB
@@ -24,11 +23,17 @@ MongoClient.connect(dbConnectionString, {useUnifiedTopology: true})
     db = client.db(dbName);
 });
 
+app.use(express.static('public'))
+
 async function getPaginatedData(collectionName, query) {
     const projection = { _id: 0 };
     const collection = db.collection(collectionName);
     return collection.find(query, { projection }).toArray();
 }
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
 
 // Endpoint to get all enemies
 app.get('/api/enemies', async (req, res) => {
@@ -114,10 +119,6 @@ function handleEnemyQueryField(query, field, value) {
         query[field] = new RegExp(value, 'i');
     }
 }
-
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
 
 app.listen(PORT, () => {
     console.log(`The server is running on port ${PORT}`);
