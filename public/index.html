@@ -115,7 +115,7 @@
                 <div class="request-example" id="enemies">
                     <div class="example-info">
                         <h3>Enemies</h3>
-                        <pre><code>GET /api/enemies?type=biter&name=small</code></pre>
+                        <pre><code>GET /api/enemies</code></pre>
                         <p>Get a paged list of all enemies matching any number of criteria, all of the following
                             filtering parameters are optional</p>
                         <table>
@@ -136,27 +136,27 @@
                                 </tr>
                                 <tr>
                                     <td>minDamage</td>
-                                    <td>(optional, number)<br>Returns enemies with a damage value <em>greater</em> than this amount.</td>
+                                    <td>(optional, number)<br>Returns enemies with a damage value <em>greater</em> than this amount.<br>Min: 7</td>
                                 </tr>
                                 <tr>
                                     <td>maxDamage</td>
-                                    <td>(optional, number)<br>Returns enemies with a damage value <em>less</em> than this amount.</td>
+                                    <td>(optional, number)<br>Returns enemies with a damage value <em>less</em> than this amount.<br>Max: 96</td>
                                 </tr>
                                 <tr>
                                     <td>minSpeed</td>
-                                    <td>(optional, number)<br>Returns enemies with a speed value <em>greater</em> than this amount.</td>
+                                    <td>(optional, number)<br>Returns enemies with a speed value <em>greater</em> than this amount.<br>Min: 32.4</td>
                                 </tr>
                                 <tr>
                                     <td>maxSpeed</td>
-                                    <td>(optional, number)<br>Returns enemies with a speed value <em>less</em> than this amount.</td>
+                                    <td>(optional, number)<br>Returns enemies with a speed value <em>less</em> than this amount.<br>Max: 64.8</td>
                                 </tr>
                                 <tr>
                                     <td>minRange</td>
-                                    <td>(optional, number)<br>Returns enemies with an attack range value <em>greater</em> than this amount.</td>
+                                    <td>(optional, number)<br>Returns enemies with an attack range value <em>greater</em> than this amount.<br>Min: 1</td>
                                 </tr>
                                 <tr>
                                     <td>maxRange</td>
-                                    <td>(optional, number)<br>Returns enemies with an attack range value <em>less</em> than this amount.</td>
+                                    <td>(optional, number)<br>Returns enemies with an attack range value <em>less</em> than this amount.<br>Max: 48</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -165,37 +165,47 @@
                     <div class="example-code">
                         <h4>Example Request</h4>
                         <pre><code>// Javascript
-fetch('/api/enemies?type=biter&name=big')
+fetch('/api/enemies?type=biter&name=big?minRange=20')
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error(error));</code></pre>
     <h4>Sample Response</h4>
                     <pre><code>[
     {
-        "name": "Big Biter",
-        "description": "Dangerous, resistant to small arms. Can attack through walls, hitting objects directly behind them.",
+        "name": "Big Worm",
+        "description": "Big worms are not as much more dangerous as resilient. They are almost immune to common gunfire of any sort.",
         "attributes": {
-        "health": 375,
-        "damage": {
-            "type": "Physical",
-            "amount": 30
-        },
-        "attack_speed": 1.71,
-        "speed": "49.7 km/h",
-        "range": 2,
-        "pollution_to_join_attack": 80
+            "health": 750,
+            "range": 38,
+            "attack_speed": 0.66,
+            "area_of_effect_size": 1.75,
+            "damage": {
+                "type": "Acid",
+                "amount": 72
+            },
+            "acid_puddle": {
+                "lifetime": 32,
+                "damage_per_second": 259,
+                "effect": {
+                    "movement_vehicle_speed_modifier": 40,
+                    "duration": 2
+                }
+            }
         },
         "resistances": {
-        "explosion": {
-            "damage_reduction": 0,
-            "resistance_percentage": 10
-        },
-        "physical": {
-            "damage_reduction": 8,
-            "resistance_percentage": 10
+            "explosion": {
+                "damage_reduction": 10,
+                "resistance_percentage": 30
+            },
+            "fire": {
+                "damage_reduction": 3,
+                "resistance_percentage": 70
+            },
+            "physical": {
+                "damage_reduction": 10,
+                "resistance_percentage": 0
+            }
         }
-        },
-        "type": "biter"
     }
 ]</code></pre>
                     </div>
@@ -203,7 +213,7 @@ fetch('/api/enemies?type=biter&name=big')
                 <div class="request-example" id="items">
                     <div class="example-info">
                         <h3>Items</h3>
-                        <pre><code>GET /api/items?name=iron-plate&category=intermediate&dimensions=1x1&craftingTime=3.2</code></pre>
+                        <pre><code>GET /api/items</code></pre>
                         <p>Returns a list of game items with the specified parameters.</p>
                         <table>
                             <thead>
@@ -237,27 +247,44 @@ fetch('/api/enemies?type=biter&name=big')
                     <div class="example-code">
                         <h4>Example Request</h4>
                         <pre><code>// Javascript
-fetch('/api/items?name=iron-plate&category=intermediate&dimensions=1x1&craftingTime=3.2')
+fetch('/api/items?name=armor&type=combat')
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error(error));</code></pre>
     <h4>Sample Response</h4>
-                    <pre><code>{
-  "items": [
+                    <pre><code>[
     {
-      "name": "Iron Plate",
-      "category": "intermediate",
-      "dimensions": "1x1",
-      "craftingTime": 3.2
+        "name": "Light armor",
+        "type": "item",
+        "category": "combat"
+    },
+    {
+        "name": "Heavy armor",
+        "type": "item",
+        "category": "combat"
+    },
+    {
+        "name": "Modular armor",
+        "type": "item",
+        "category": "combat"
+    },
+    {
+        "name": "Power armor",
+        "type": "item",
+        "category": "combat"
+    },
+    {
+        "name": "Power armor MK2",
+        "type": "item",
+        "category": "combat"
     }
-  ]
-}</code></pre>
+]</code></pre>
                     </div>
                 </div>
                 <div class="request-example" id="research">
                     <div class="example-info">
                         <h3>Research</h3>
-                        <pre><code>GET /api/research?name=automation&sciencePacks=automation-science-pack,logistic-science-pack</code></pre>
+                        <pre><code>GET /api/research</code></pre>
                         <table>
                             <thead>
                                 <tr>
@@ -282,27 +309,49 @@ fetch('/api/items?name=iron-plate&category=intermediate&dimensions=1x1&craftingT
                     <div class="example-code">
                         <h4>Example Request</h4>
                         <pre><code>// Javascript
-fetch('/api/research?name=automation&sciencePacks=automation-science-pack,logistic-science-pack')
+fetch('/api/research?name=automation')
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error(error));</code></pre>
     <h4>Sample Response</h4>
-                    <pre><code>{
-  "research": [
+                    <pre><code>[
     {
-      "name": "Automation",
-      "sciencePacks": [
-        "automation-science-pack",
-        "logistic-science-pack"
-      ]
+        "name": "Automation",
+        "cost": {
+            "Automation science pack": 10
+        },
+        "effects": [
+            "Assembling machine 1",
+            "Long-handed inserter"
+        ]
+    },
+    {
+        "name": "Automation 2",
+        "cost": {
+            "Automation science pack": 40,
+            "Logistic science pack": 40
+        },
+        "effects": [
+            "Assembling machine 2"
+        ]
+    },
+    {
+        "name": "Automation 3",
+        "cost": {
+            "Automation science pack": 150,
+            "Logistic science pack": 150,
+            "Military science pack": 150,
+            "Production science pack": 150
+        },
+        "effects": [
+            "Assembling machine 3"
+        ]
     }
-  ]
-}</code></pre>
+]</code></pre>
                     </div>
                 </div>
         </main>
     </div>
-    <!-- <script src="ui.js"></script> -->
 </body>
 
 </html>
