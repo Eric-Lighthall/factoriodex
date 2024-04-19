@@ -79,23 +79,6 @@ header {
     color: #3498db;
 }
 
-.dropdown-toggle::after {
-    /* content: '\25BE'; */
-    margin-left: 5px;
-}
-
-.dropdown-menu {
-    display: none;
-    position: static;
-    background-color: #24292e;
-    padding: 10px;
-    margin-top: 5px;
-}
-
-.dropdown.active .dropdown-menu {
-    display: block;
-}
-
 main {
     flex-grow: 1;
     overflow-x: hidden;
@@ -120,16 +103,6 @@ main {
 
 .content p {
     margin-bottom: 15px;
-}
-
-.request-examples {
-    background-color: #24292e;
-    color: #ffffff;
-}
-
-.request-examples h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
 }
 
 .request-example {
