@@ -14,8 +14,8 @@ app.use(express.json());
 
 // Connect to MongoDB
 let db,
-      dbConnectionString = process.env.MONGODB_URI
-      dbName = 'FactorioData'
+    dbConnectionString = process.env.MONGODB_URI,
+    dbName = 'FactorioData';
 
 MongoClient.connect(dbConnectionString, {useUnifiedTopology: true})
   .then(client => {
@@ -57,6 +57,7 @@ app.get('/api/research', async (req, res) => {
     }
 });
 
+// Endpoint to get all items
 app.get('/api/items', async (req, res) => {
     const query = buildItemQuery(req);
     try {
@@ -90,13 +91,9 @@ function buildItemQuery(req) {
 
 function buildResearchQuery(req) {
     const query = {};
-    // Query by name using regex for partial match
-    if (req.query.sciencePacks) {
-        query.name = new RegExp(req.query.name.replace(/_/g, ' '), 'i');
-    }
-
     // Handle queries for science pack existence
     if (req.query.sciencePacks) {
+        query.name = new RegExp(req.query.name.replace(/_/g, ' '), 'i');
         const packs = req.query.sciencePacks.toLowerCase().split(',').map(pack => pack.trim().replace(/_/g, ' '));
         query.$or = packs.map(pack => {
             const key = `cost.${pack}`;
