@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Factoriodex</title>
-    <link rel="stylesheet" href="/reset.css"/>
-    <link rel="stylesheet" href="/styles.css"/>
+    <link rel="stylesheet" href="/reset.css" />
+    <link rel="stylesheet" href="/styles.css" />
 </head>
 
 <body>
@@ -27,26 +27,14 @@
                 <li>
                     <a href="#intro">Introduction</a>
                 </li>
-                <li class="dropdown">
-                    <a href="#items" class="dropdown-toggle">Items</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Link 1</a></li>
-                        <li><a href="#">Link 2</a></li>
-                    </ul>
+                <li>
+                    <a href="#items">Items</a>
                 </li>
-                <li class="dropdown">
-                    <a href="#enemies" class="dropdown-toggle">Enemies</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Link 1</a></li>
-                        <li><a href="#">Link 2</a></li>
-                    </ul>
+                <li>
+                    <a href="#enemies">Enemies</a>
                 </li>
-                <li class="dropdown">
-                    <a href="#research" class="dropdown-toggle">Research</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Link 1</a></li>
-                        <li><a href="#">Link 2</a></li>
-                    </ul>
+                <li>
+                    <a href="#research">Research</a>
                 </li>
             </ul>
         </aside>
@@ -136,27 +124,33 @@
                                 </tr>
                                 <tr>
                                     <td>minDamage</td>
-                                    <td>(optional, number)<br>Returns enemies with a damage value <em>greater</em> than this amount.<br>Min: 7</td>
+                                    <td>(optional, number)<br>Returns enemies with a damage value <em>greater</em> than
+                                        this amount.<br>Min: 7</td>
                                 </tr>
                                 <tr>
                                     <td>maxDamage</td>
-                                    <td>(optional, number)<br>Returns enemies with a damage value <em>less</em> than this amount.<br>Max: 96</td>
+                                    <td>(optional, number)<br>Returns enemies with a damage value <em>less</em> than
+                                        this amount.<br>Max: 96</td>
                                 </tr>
                                 <tr>
                                     <td>minSpeed</td>
-                                    <td>(optional, number)<br>Returns enemies with a speed value <em>greater</em> than this amount.<br>Min: 32.4</td>
+                                    <td>(optional, number)<br>Returns enemies with a speed value <em>greater</em> than
+                                        this amount.<br>Min: 32.4</td>
                                 </tr>
                                 <tr>
                                     <td>maxSpeed</td>
-                                    <td>(optional, number)<br>Returns enemies with a speed value <em>less</em> than this amount.<br>Max: 64.8</td>
+                                    <td>(optional, number)<br>Returns enemies with a speed value <em>less</em> than this
+                                        amount.<br>Max: 64.8</td>
                                 </tr>
                                 <tr>
                                     <td>minRange</td>
-                                    <td>(optional, number)<br>Returns enemies with an attack range value <em>greater</em> than this amount.<br>Min: 1</td>
+                                    <td>(optional, number)<br>Returns enemies with an attack range value
+                                        <em>greater</em> than this amount.<br>Min: 1</td>
                                 </tr>
                                 <tr>
                                     <td>maxRange</td>
-                                    <td>(optional, number)<br>Returns enemies with an attack range value <em>less</em> than this amount.<br>Max: 48</td>
+                                    <td>(optional, number)<br>Returns enemies with an attack range value <em>less</em>
+                                        than this amount.<br>Max: 48</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -169,8 +163,8 @@ fetch('/api/enemies?type=biter&name=big?minRange=20')
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error(error));</code></pre>
-    <h4>Sample Response</h4>
-                    <pre><code>[
+                        <h4>Sample Response</h4>
+                        <pre><code>[
     {
         "name": "Big Worm",
         "description": "Big worms are not as much more dangerous as resilient. They are almost immune to common gunfire of any sort.",
@@ -251,8 +245,8 @@ fetch('/api/items?name=armor&type=combat')
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error(error));</code></pre>
-    <h4>Sample Response</h4>
-                    <pre><code>[
+                        <h4>Sample Response</h4>
+                        <pre><code>[
     {
         "name": "Light armor",
         "type": "item",
@@ -313,8 +307,8 @@ fetch('/api/research?name=automation')
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error(error));</code></pre>
-    <h4>Sample Response</h4>
-                    <pre><code>[
+                        <h4>Sample Response</h4>
+                        <pre><code>[
     {
         "name": "Automation",
         "cost": {
