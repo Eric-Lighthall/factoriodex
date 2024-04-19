@@ -21,7 +21,14 @@ MongoClient.connect(dbConnectionString, {useUnifiedTopology: true})
   .then(client => {
     console.log(`Connected to ${dbName} Database`);
     db = client.db(dbName);
-});
+        app.listen(PORT, () => {
+            console.log(`The server is running on port ${PORT}`);
+        });
+    })
+    .catch(error => {
+        console.error("Failed to connect to the database:", error);
+        process.exit(1);
+    });
 
 app.use(express.static('public'))
 
@@ -116,7 +123,3 @@ function handleEnemyQueryField(query, field, value) {
         query[field] = new RegExp(value, 'i');
     }
 }
-
-app.listen(PORT, () => {
-    console.log(`The server is running on port ${PORT}`);
-});
