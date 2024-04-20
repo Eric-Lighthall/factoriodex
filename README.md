@@ -24,6 +24,12 @@
 </div>
 
 
+<!-- DISCLAIMER -->
+## Disclaimer
+Factoriodex is not affiliated with or endorsed by Factorio or its creators.
+
+
+
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 Factoriodex is a curated API by Eric Lighthall, offering detailed Factorio data on items, enemies, and research. It is crafted with Node.js and MongoDB and hosted seamlessly on Cyclic.sh. Accompanying the API is a static site documenting its use, built with vanilla HTML and CSS for clarity and ease of access.
