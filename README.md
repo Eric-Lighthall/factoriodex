@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 
-## Factoriodex is currently offline and will be back up May 1st, PDT.
+## Factoriodex is currently offline. The site is in the process of migrating hosts.
 
 
 <!-- PROJECT LOGO -->
