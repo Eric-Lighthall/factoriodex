@@ -1,8 +1,6 @@
 <a name="readme-top"></a>
 
 
-## Factoriodex is currently offline. The site is in the process of migrating hosts.
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -18,7 +16,7 @@
     <br />
     <br />
     <br />
-    <a href="https://factoriodex.cyclic.app/">Live Site</a>
+    <a href="https://factoriodex-production.up.railway.app/">Live Site</a>
     ·
     <a href="https://github.com/Eric-Lighthall/factoriodex/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
@@ -35,7 +33,7 @@ Factoriodex is not affiliated with or endorsed by Factorio or its creators.
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Factoriodex is a curated API by Eric Lighthall, offering detailed Factorio data on items, enemies, and research. It is crafted with Node.js and MongoDB and hosted seamlessly on Cyclic.sh. Accompanying the API is a static site documenting its use, built with vanilla HTML and CSS for clarity and ease of access.
+Factoriodex is a curated API by Eric Lighthall, offering detailed Factorio data on items, enemies, and research. It is crafted with Node.js and MongoDB is hosted using <a href="https://railway.app/" target="_blank">Railway</a>. Accompanying the API is a static site documenting its use, built with vanilla HTML and CSS for clarity and ease of access.
 
 
 
@@ -54,26 +52,26 @@ Factoriodex is a curated API by Eric Lighthall, offering detailed Factorio data 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Factoriodex can be found on https://factoriodex.cyclic.app/. 
+Factoriodex can be found on https://factoriodex-production.up.railway.app. 
 
 Factoriodex fully supports CORS so no API keys are needed. You can start using factoriodex right away on your own projects!
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-The base URL for the API can be accessed with https://factoriodex.cyclic.app/api/. To make a valid request, you need to append an endpoint to the base URL and include query parameters as needed.
+The base URL for the API can be accessed with https://factoriodex-production.up.railway.app/. To make a valid request, you need to append an endpoint to the base URL and include query parameters as needed.
 
 The following endpoints are accessible
   ```http
-  GET https://factoriodex.cyclic.app/api/enemies
+  GET https://factoriodex-production.up.railway.app/api/enemies
   ```
 
   ```http
-  GET https://factoriodex.cyclic.app/api/items
+  GET https://factoriodex-production.up.railway.app/api/items
   ```
 
   ```http
-  GET https://factoriodex.cyclic.app/api/research
+  GET https://factoriodex-production.up.railway.app/api/research
   ```
 
   ## Example Request 
